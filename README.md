@@ -11,11 +11,11 @@ npm install react-native-number-picker
 ## Usage
 
 ```js
-import { multiply } from "react-native-number-picker";
+import NumberPicker from "react-native-number-picker";
 
 // ...
 
-const result = await multiply(3, 7);
+<NumberPicker items={[]} />
 ```
 
 ## Contributing

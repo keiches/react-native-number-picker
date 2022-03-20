@@ -1,18 +1,20 @@
 import * as React from 'react';
 
 import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'react-native-number-picker';
+import NumberPicker from 'react-native-number-picker';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
-
-  React.useEffect(() => {
-    multiply(3, 7).then(setResult);
-  }, []);
-
+  const initialValues = [{id: 'pizza', value: 3}];
+  const [pizzas, setPizzas] = React.useState(initialValues);
+  const pizzaNumbers = [{id: 'pizza', label: '🍕', min: 0, max: 99}];
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <Text>Picker</Text>
+      <NumberPicker
+        items={pizzaNumbers}
+        values={pizzas}
+        onChange={values => setPizzas(values)}
+      />
     </View>
   );
 }
