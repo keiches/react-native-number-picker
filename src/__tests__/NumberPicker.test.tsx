@@ -10,7 +10,7 @@ describe('Picker', () => {
 
     const { toJSON } = render(
       <NumberPicker
-        pickers={pizzaNumbers}
+        items={pizzaNumbers}
         values={pizzas}
         onChange={(values: any) => console.log(values)}
       />

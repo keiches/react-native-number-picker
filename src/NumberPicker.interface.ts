@@ -1,6 +1,8 @@
 import type { RefObject } from 'react';
 import type { PickerProps } from '@react-native-picker/picker';
 
+export type NumberPickerItemId = string;
+
 export interface NumberPickerItem {
   /**
    * ID of the picker, which will be used as key in the returned value object.
@@ -8,7 +10,7 @@ export interface NumberPickerItem {
    * @type {string}
    * @memberof NumberPickerItem
    */
-  id: string;
+  id: NumberPickerItemId;
   /**
    * Picker ref
    * @type {*}
@@ -65,7 +67,7 @@ export interface NumberPickerProps extends PickerProps {
    * @return {*}  {*}
    * @memberof NumberPickerProps
    */
-  onChange(value: any): any;
+  onChange: (value: any) => void;
   /**
    * Divider to be used to separate items.
    * @type {*}

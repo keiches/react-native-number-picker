@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { StyleSheet, View, Text } from 'react-native';
-import NumberPicker from 'react-native-number-picker';
+import NumberPicker from '../../src';
 
 export default function App() {
   const initialValues = [{id: 'pizza', value: 3}];

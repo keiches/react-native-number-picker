@@ -4,13 +4,21 @@ import { Picker } from '@react-native-picker/picker';
 import { find } from './utils/array.utils';
 import type {
   NumberPickerProps,
+  NumberPickerItem,
   NumberPickerValue,
 } from './NumberPicker.interface';
 import range from './utils/range';
 
 const PickerFactory: React.FC<any> = React.forwardRef(
   (
-    { pickerProps, selectedValue, onChange, style, itemStyle, disabled }: any,
+    {
+      pickerProps,
+      selectedValue,
+      onValueChange,
+      style,
+      itemStyle,
+      disabled,
+    }: any,
     ref: any
   ) => {
     const { id, label = '', min, max } = pickerProps;
@@ -22,7 +30,7 @@ const PickerFactory: React.FC<any> = React.forwardRef(
         ref={ref}
         style={{ ...styles.picker, ...style }}
         selectedValue={selectedValue}
-        onValueChange={(value: any) => onChange({ [id]: value })}
+        onValueChange={(value: any) => onValueChange({ [id]: value })}
         itemStyle={itemStyle}
         enabled={!disabled}
       >
@@ -57,29 +65,29 @@ const NumberPicker: React.FC<NumberPickerProps> = ({
     });
   }, [values, items]);
 
-  const onChangeHandle = (value: NumberPickerValue) => {
+  const handleValueChange = (value: NumberPickerValue) => {
     onChange({
       ...values,
       ...value,
     });
   };
 
-  const findPickerValue = (picker: any) => {
-    return values[picker.id];
+  const getItemValue = (item: NumberPickerItem) => {
+    return values[item.id];
   };
 
   return (
     <View style={styles.container}>
-      {items.map((picker: any, index: any) => {
-        const { id, ref, disabled = false } = picker;
-        const pickerValue = findPickerValue(picker);
+      {items.map((item: any, index: any) => {
+        const { id, ref, disabled = false } = item;
+        const itemValue = getItemValue(item);
         return (
           <PickerFactory
             ref={ref}
             key={`${id}-picker-${index}`}
-            pickerProps={picker}
-            selectedValue={pickerValue}
-            onChange={onChangeHandle}
+            pickerProps={item}
+            selectedValue={itemValue}
+            onValueChange={handleValueChange}
             disabled={disabled}
             itemStyle={itemStyle}
             style={style}
