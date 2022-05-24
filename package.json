@@ -1,6 +1,6 @@
 {
   "name": "react-native-number-picker",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "React Native Number Picker",
   "private": true,
   "main": "lib/commonjs/index",

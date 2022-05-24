@@ -67,7 +67,7 @@ export interface NumberPickerProps extends PickerProps {
    * @return {*}  {*}
    * @memberof NumberPickerProps
    */
-  onChange: (value: any) => void;
+  onValueChange: (value: any) => void;
   /**
    * Divider to be used to separate items.
    * @type {*}
